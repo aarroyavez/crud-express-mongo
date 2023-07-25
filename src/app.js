@@ -1,21 +1,21 @@
-import express from "express";
-// const express = require("express")
-import exphbs from "express-handlebars";
-import indexRouter from "./routes/index.routes";
-import path from "path";
-
-
+import express from 'express';
+import indexRoutes from './routes/index.routes'
+import path from 'path'
+import { create } from 'express-handlebars';
 const app = express();
 
-app.set("views", path.join(__dirname, "views"))
-// Decirle a express qué motor de plantilla voy a usar
-app.engine(".hbs", exphbs({
+app.set('views', path.join(__dirname, '/views'));
 
+const hbs = create({
+    layoutsDir: path.join(app.get("views"), "layouts"),
+    defaultLayout: "main",
     extname: ".hbs",
-}
-))
+})
 
-// Routes
-app.use(indexRouter);
+app.engine(".hbs", hbs.engine);
+
+app.set("view engine", ".hbs");
+
+app.use(indexRoutes);
 
 export default app;
