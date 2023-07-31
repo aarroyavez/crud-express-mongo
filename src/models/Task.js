@@ -12,10 +12,14 @@ const taskSchema = new Schema(
       type: String,
       required: true,
     },
-    done: Boolean,
+    done: {
+      type: Boolean,
+      default: false, // siempre que se crea tarea, no está hecha
+    },
   },
   {
     timestamps: true,
+    versionKey: false // para que no se añada __v: 0 por defecto de mongoose
   }
 );
 
