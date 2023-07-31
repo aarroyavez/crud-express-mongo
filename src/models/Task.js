@@ -3,11 +3,15 @@ import { Schema, model } from "mongoose";
 const taskSchema = new Schema(
   {
     title: {
-        type: String, // tipo de dato
-        required: true, // error si no hay título
-        unique: true, // título único
+      type: String, // tipo de dato
+      required: true, // error si no hay título
+      unique: true, // título único
+      trim: true,
     },
-        description: String,
+    description: {
+      type: String,
+      required: true,
+    },
     done: Boolean,
   },
   {
