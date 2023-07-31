@@ -6,11 +6,7 @@
 
   <div>
     <label for="description">Description:</label>
-    <textarea
-      name="description"
-      placeholder="Description"
-      id="description"
-    ></textarea>
+    <textarea name="description" placeholder="Description" id="description"></textarea>
   </div>
 
   <button>Add</button>
@@ -18,9 +14,12 @@
 </form>
 
 <ul>
-
+  {{#each tasks}}
   <li>
-    
+    {{title}}
+    <p>{{description}}</p>
+    <button>Edit</button>
+    <button>Delete</button>
   </li>
-
+  {{/each}}
 </ul>

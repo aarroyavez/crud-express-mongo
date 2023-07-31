@@ -4,10 +4,11 @@ const router = Router()
 
 router.get("/", async (req, res) => {
 
-    const tasks = await Task.find()
-    console.log(tasks)
+    const tasks = await Task.find().lean()
+    // console.log(tasks)
 
-    res.render("index")
+    // index hace referencia al hbs
+    res.render("index", {tasks: tasks}) //propiedad tasks y su valor son las tareas que obtengo en la base de datos (tasks)
 })
 
 router.post("/tasks/add", async (req, res) => {

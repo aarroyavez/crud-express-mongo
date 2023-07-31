@@ -1,5 +1,5 @@
 import app from "./app"
 import "./database"
 
-app.listen(4040);
-console.log("Server on port", 4040)
+app.listen(4050);
+console.log("Server on port", 4050)
