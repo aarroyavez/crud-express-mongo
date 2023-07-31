@@ -1,4 +1,4 @@
-import {Router} from "express";
+import { Router } from "express";
 import Task from "../models/Task"
 const router = Router()
 
@@ -11,10 +11,12 @@ router.post("/tasks/add", async (req, res) => {
     const task = Task(req.body)
 
     // Objeto que se guardara en mongodb
-    const taskSaved = await task.save()
-    console.log(taskSaved)
+    // const taskSaved = await task.save()
+    await task.save()
 
-    res.send("saved")
+    // console.log(taskSaved)
+    res.redirect("/");
+    // res.send("saved")
 })
 
 router.get("/about", (req, res) => {
