@@ -18,7 +18,7 @@ const taskSchema = new Schema(
     },
   },
   {
-    timestamps: true,
+    timestamps: true, // fecha de creación y actualización
     versionKey: false // para que no se añada __v: 0 por defecto de mongoose
   }
 );
