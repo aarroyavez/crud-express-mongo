@@ -43,15 +43,25 @@ router.get("/edit/:id", async (req, res) => {
 // Para en el frontend, debe usarse un método que crea un input oculto y es algo más complicado para poder usar el método http put
 // se usa POST para efectos prácticos. Si hubiera un framework como react, tampoco sería necesario
 // Para recibir los datos del formulario que envíe el frontend
+// edit route
 router.post("/edit/:id", async (req, res) => {
 
-    const {id} = req.params
+    const { id } = req.params
 
     await Task.findByIdAndUpdate(id, req.body)
 
     console.log(req.body);
     console.log(req.params.id);
 
+    res.redirect("/");
+})
+
+// delete router
+// El usuario "elimina", llega al backend, se ejecuta el siguiente código y por último, se direcciona a la misma página
+router.get("/delete/:id", async (req, res) => {
+    const { id } = req.params;
+
+    await Task.findByIdAndDelete(id); //no es necesario pasar un body porque no lo va a actualizar. Solo borrará por id
     res.redirect("/");
 })
 
