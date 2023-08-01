@@ -8,20 +8,22 @@ router.get("/", async (req, res) => {
     // console.log(tasks)
 
     // index hace referencia al hbs
-    res.render("index", {tasks: tasks}) //propiedad tasks y su valor son las tareas que obtengo en la base de datos (tasks)
+    res.render("index", { tasks: tasks }) //propiedad tasks y su valor son las tareas que obtengo en la base de datos (tasks)
 })
 
 router.post("/tasks/add", async (req, res) => {
+    try {
+        const task = Task(req.body)
 
-    const task = Task(req.body)
+        // Objeto que se guardara en mongodb
+        // const taskSaved = await task.save()
+        await task.save()
 
-    // Objeto que se guardara en mongodb
-    // const taskSaved = await task.save()
-    await task.save()
-
-    // console.log(taskSaved)
-    res.redirect("/");
-    // res.send("saved")
+        // console.log(taskSaved)
+        res.redirect("/");
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 router.get("/about", (req, res) => {
