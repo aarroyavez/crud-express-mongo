@@ -65,4 +65,20 @@ router.get("/delete/:id", async (req, res) => {
     res.redirect("/");
 })
 
+// toggleDone -> toggle = que cambie a true o false
+router.get("/toggleDone/:id", async (req, res) => {
+
+    const { id } = req.params;
+
+    const task = await Task.findById(id);
+
+    // Por defecto es false, el símbolo ! lo convierte en true
+    task.done = !task.done;
+
+    // Guardar
+    await task.save();
+
+    res.redirect("/");
+})
+
 export default router;
