@@ -30,8 +30,14 @@ router.get("/about", (req, res) => {
     res.render("about")
 })
 
-router.get("/edit/:id", (req, res) => {
-    res.render("edit")
+router.get("/edit/:id", async (req, res) => {
+    try {
+        const task = await Task.findById(req.params.id).lean(); //lean para que admita objetos de js y no de mongodb
+
+        res.render("edit", { task });
+    } catch (error) {
+        console.log(error.message);
+    }
 })
 
 // Para en el frontend, debe usarse un método que crea un input oculto y es algo más complicado para poder usar el método http put
