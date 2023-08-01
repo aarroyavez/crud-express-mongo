@@ -1,15 +1,9 @@
 import { Router } from "express";
 import Task from "../models/Task"
+import { renderTasks } from "../controllers/task.controller";
 const router = Router()
 
-router.get("/", async (req, res) => {
-
-    const tasks = await Task.find().lean()
-    // console.log(tasks)
-
-    // index hace referencia al hbs
-    res.render("index", { tasks: tasks }) //propiedad tasks y su valor son las tareas que obtengo en la base de datos (tasks)
-})
+router.get("/", renderTasks)
 
 router.post("/tasks/add", async (req, res) => {
     try {
