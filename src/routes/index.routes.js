@@ -43,12 +43,16 @@ router.get("/edit/:id", async (req, res) => {
 // Para en el frontend, debe usarse un método que crea un input oculto y es algo más complicado para poder usar el método http put
 // se usa POST para efectos prácticos. Si hubiera un framework como react, tampoco sería necesario
 // Para recibir los datos del formulario que envíe el frontend
-router.post("/edit/:id", (req, res) => {
+router.post("/edit/:id", async (req, res) => {
+
+    const {id} = req.params
+
+    await Task.findByIdAndUpdate(id, req.body)
 
     console.log(req.body);
     console.log(req.params.id);
 
-    res.send("received");
+    res.redirect("/");
 })
 
 export default router;
