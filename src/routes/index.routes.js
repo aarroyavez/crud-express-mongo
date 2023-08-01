@@ -18,10 +18,10 @@ router.post("/tasks/add", createTask);
 //     res.render("about")
 // })
 
-router.get("/edit/:id", renderTaskEdit);
+router.get("/tasks/:id/edit", renderTaskEdit);
 
 // edit route
-router.post("/edit/:id", editTask);
+router.post("/tasks/:id/edit", editTask);
 
 // delete router
 router.get("/delete/:id", deleteTask);

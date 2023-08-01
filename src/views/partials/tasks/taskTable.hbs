@@ -1,34 +1,34 @@
 <table>
-    <thead>
-        <tr>
-            <th>N.</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Operations</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>N.</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
 
-    <tbody>
+  <tbody>
 
-        {{#each tasks}}
-        <tr>
-            <td>{{@index}}</td>
-            <td>{{{title}}}</td>
-            <td>{{description}}</td>
-            <td>
-                {{!-- <button>Update</button> --}}
-                {{#if done}}
-                <a href="/toggleDone/{{_id}}">Undone</a>
-                {{else}}
-                <a href="/toggleDone/{{_id}}">Done</a>
-                {{/if}}
+    {{#each tasks}}
+      <tr>
+        <td>{{@index}}</td>
+        <td>{{{title}}}</td>
+        <td>{{description}}</td>
+        <td>
+          {{! <button>Update</button> }}
+          {{#if done}}
+            <a href="/toggleDone/{{_id}}">Undone</a>
+          {{else}}
+            <a href="/toggleDone/{{_id}}">Done</a>
+          {{/if}}
 
-                <a href="/edit/{{_id}}">Update</a>
-                <a href="/delete/{{_id}}">Delete</a>
-                {{!-- <button>Delete</button> --}}
-            </td>
-        </tr>
-        {{/each}}
+          <a href="/tasks/{{_id}}/edit">Update</a>
+          <a href="/delete/{{_id}}">Delete</a>
+          {{! <button>Delete</button> }}
+        </td>
+      </tr>
+    {{/each}}
 
-    </tbody>
+  </tbody>
 </table>
