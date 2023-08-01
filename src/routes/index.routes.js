@@ -34,4 +34,10 @@ router.get("/edit", (req, res) => {
     res.render("edit")
 })
 
+// Para en el frontend, debe usarse un método que crea un input oculto y es algo más complicado para poder usar el método http put
+// se usa POST para efectos prácticos. Si hubiera un framework como react, tampoco sería necesario
+router.post("/edit", (req, res) => {
+    res.send("received")
+})
+
 export default router;
