@@ -1,4 +1,4 @@
-import "./config"
+import "./config" // debe importarse al inicio de la app
 import app from "./app"
 import "./database"
 
