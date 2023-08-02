@@ -1,3 +1,5 @@
 .env
 
-node_modulea
+node_modules
+
+.dist
